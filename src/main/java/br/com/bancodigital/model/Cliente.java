@@ -2,7 +2,7 @@ package br.com.bancodigital.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 public class Cliente implements Serializable {
@@ -23,7 +23,7 @@ public class Cliente implements Serializable {
     private String email;
 
     @Column(nullable = false)
-    private LocalDateTime dataNascimento;
+    private LocalDate dataNascimento;
 
     @Column(nullable = false, unique = true)
     private String cpf;
@@ -32,7 +32,7 @@ public class Cliente implements Serializable {
 
     }
 
-    public Cliente(String nome, String sobrenome, String email, LocalDateTime dataNascimento, String cpf) {
+    public Cliente(String nome, String sobrenome, String email, LocalDate dataNascimento, String cpf) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
@@ -68,11 +68,11 @@ public class Cliente implements Serializable {
         this.email = email;
     }
 
-    public LocalDateTime getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDateTime dataDeNascimento) {
+    public void setDataNascimento(LocalDate dataDeNascimento) {
         this.dataNascimento = dataDeNascimento;
     }
 

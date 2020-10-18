@@ -11,16 +11,12 @@ import java.time.LocalDateTime;
 
 @SpringBootApplication
 public class SpringbootApplication implements CommandLineRunner {
-
-    @Autowired
-    private ClienteRepository clienteRepository;
     public static void main(String[] args) {
         SpringApplication.run(SpringbootApplication.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
-        Cliente c1 = new Cliente("Virgilio", "Cano", "virgiliocano53@gmail.com", LocalDateTime.now(), "70247394106");
-        clienteRepository.save(c1);
+
     }
 }
