@@ -1,0 +1,12 @@
+version: "3"
+services:
+  tad:
+    image: postgres:9.6
+    container_name: "postgres"
+    environment:
+      - POSTGRES_DB=banco-digital
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=zup
+      - TZ=GMT
+    ports:
+      - 5432:5432

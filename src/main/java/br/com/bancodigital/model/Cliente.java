@@ -1,32 +1,47 @@
 package br.com.bancodigital.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
+@Entity
 public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @SequenceGenerator(name = "propostas_id_seq", sequenceName = "propostas_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "propostas_id_seq")
     private Integer id;
+
+    @Column(nullable = false)
     private String nome;
+
+    @Column(nullable = false)
     private String sobrenome;
+
+    @Column(nullable = false, unique = true)
     private String email;
-    private String dataDeNascimento;
+
+    @Column(nullable = false)
+    private LocalDateTime dataNascimento;
+
+    @Column(nullable = false, unique = true)
     private String cpf;
 
-    public Cliente(Integer id, String nome, String sobrenome, String email, String dataDeNascimento, String cpf) {
-        this.id = id;
+    public Cliente() {
+
+    }
+
+    public Cliente(String nome, String sobrenome, String email, LocalDateTime dataNascimento, String cpf) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
-        this.dataDeNascimento = dataDeNascimento;
+        this.dataNascimento = dataNascimento;
         this.cpf = cpf;
     }
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -53,12 +68,12 @@ public class Cliente implements Serializable {
         this.email = email;
     }
 
-    public String getDataDeNascimento() {
-        return dataDeNascimento;
+    public LocalDateTime getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDataDeNascimento(String dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
+    public void setDataNascimento(LocalDateTime dataDeNascimento) {
+        this.dataNascimento = dataDeNascimento;
     }
 
     public String getCpf() {
@@ -76,7 +91,7 @@ public class Cliente implements Serializable {
                 ", nome='" + nome + '\'' +
                 ", sobrenome='" + sobrenome + '\'' +
                 ", email='" + email + '\'' +
-                ", dataDeNascimento=" + dataDeNascimento +
+                ", dataDeNascimento=" + dataNascimento +
                 ", cpf='" + cpf + '\'' +
                 '}';
     }
