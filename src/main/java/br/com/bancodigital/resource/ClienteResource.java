@@ -1,6 +1,7 @@
 package br.com.bancodigital.resource;
 
 import br.com.bancodigital.dto.ClienteInput;
+import br.com.bancodigital.exception.ResourceNotFoundException;
 import br.com.bancodigital.mapper.ClienteMapper;
 import br.com.bancodigital.model.Cliente;
 import br.com.bancodigital.service.ClienteService;
