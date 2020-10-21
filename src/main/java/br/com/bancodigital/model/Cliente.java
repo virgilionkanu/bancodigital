@@ -28,16 +28,21 @@ public class Cliente implements Serializable {
     @Column(nullable = false, unique = true)
     private String cpf;
 
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private Endereco endereco;
+
     public Cliente() {
 
     }
 
-    public Cliente(String nome, String sobrenome, String email, LocalDate dataNascimento, String cpf) {
+    public Cliente(String nome, String sobrenome, String email, LocalDate dataNascimento, String cpf, Endereco endereco) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
+        this.endereco = endereco;
     }
 
     public Integer getId() {
@@ -84,15 +89,24 @@ public class Cliente implements Serializable {
         this.cpf = cpf;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    @Override
+    public String toString() {
         return "Cliente{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", sobrenome='" + sobrenome + '\'' +
                 ", email='" + email + '\'' +
-                ", dataDeNascimento=" + dataNascimento +
+                ", dataNascimento=" + dataNascimento +
                 ", cpf='" + cpf + '\'' +
+                ", endereco=" + endereco +
                 '}';
     }
 }
